@@ -91,8 +91,9 @@ class HomeScreen extends StatelessWidget{
                             padding: const EdgeInsets.all(10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                const SizedBox(height: 10,),
+                                //const SizedBox(height: 10,),
                                 WeatherPlates(Icons.cloud,'${realtimeData.rain_possibility}%','RAIN',const Color(0xff5EB2F4)),
                                 const SizedBox(height: 10,),
                                 WeatherPlates(Icons.water_drop,'${realtimeData.humidity}%','HUMIDITY',const Color(0xff4BA5BD)),
@@ -127,7 +128,7 @@ class HomeScreen extends StatelessWidget{
                       child: Container(
                         height: 30,
                         width: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xffFEBA48),
                         ),

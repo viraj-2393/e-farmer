@@ -1,10 +1,15 @@
+import 'package:efarmer/viewmodels/WeatherDataViewModel.dart';
 import 'package:efarmer/widget/flower.dart';
 import 'package:efarmer/widget/weatherplates.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../viewmodels/WeatherInfo.dart';
 
 class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    final dataToDisplay = Provider.of<WeatherDataViewModel>(context);
+    final WeatherInfo realtimeData = dataToDisplay.weatherInfo;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -39,13 +44,19 @@ class HomeScreen extends StatelessWidget{
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            SizedBox(height: 20,),
-                            Text('38°C',style: TextStyle(color: Colors.white,fontSize: 25),),
-                            Text('Max',style: TextStyle(color: Colors.white),),
-                            SizedBox(height: 20,),
-                            Text('35°C',style: TextStyle(color: Colors.white,fontSize: 25),),
-                            Text('Feels like',style: TextStyle(color: Colors.white),)
+                          children:  [
+                            const SizedBox(height: 20,),
+                            SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Image.asset(realtimeData.is_day?'assets/images/sun.png':'assets/images/half-moon.png',fit: BoxFit.contain,),
+                            ),
+                            const SizedBox(height: 20,),
+                            Text('${realtimeData.current_temp}°C',style: TextStyle(color: Colors.white,fontSize: 25),),
+                            const Text('Max',style: TextStyle(color: Colors.white),),
+                            const SizedBox(height: 20,),
+                            Text('${realtimeData.current_feels_like_temp}°C',style: TextStyle(color: Colors.white,fontSize: 25),),
+                            const Text('Feels like',style: TextStyle(color: Colors.white),)
                           ],
                         ),
                       ) ,
@@ -77,16 +88,16 @@ class HomeScreen extends StatelessWidget{
                             borderRadius: const BorderRadius.only(topLeft: Radius.circular(20))
                         ),
                           child:Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(height: 10,),
-                                WeatherPlates(Icons.cloud,'No Rain','RAIN',Color(0xff5EB2F4)),
+                                WeatherPlates(Icons.cloud,'${realtimeData.rain_possibility}%','RAIN',const Color(0xff5EB2F4)),
                                 const SizedBox(height: 10,),
-                                WeatherPlates(Icons.water_drop,'43%','HUMIDITY',Color(0xff4BA5BD)),
+                                WeatherPlates(Icons.water_drop,'${realtimeData.humidity}%','HUMIDITY',const Color(0xff4BA5BD)),
                                 const SizedBox(height: 10,),
-                                WeatherPlates(Icons.air,'9.4 Km/hr','WIND',Color(0xff5EEFC4)),
+                                WeatherPlates(Icons.air,'${realtimeData.wind_speed} Km/hr','WIND',const Color(0xff5EEFC4)),
                               ],
                             ),
                           )

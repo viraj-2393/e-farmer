@@ -1,6 +1,8 @@
 import 'package:efarmer/screens/homescreen.dart';
 import 'package:efarmer/screens/splashscreen.dart';
+import 'package:efarmer/viewmodels/WeatherDataViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   Map<int, Color> color =
@@ -22,7 +24,10 @@ void main() {
       primarySwatch: MaterialColor(0xff26c486,color),
     ),
     routes: {
-      "/": (ctx) => HomeScreen(),
+      "/": (ctx) => ChangeNotifierProvider(
+         create: (ctx) => WeatherDataViewModel(),
+         child: HomeScreen(),
+      ),
     },
   ));
 }

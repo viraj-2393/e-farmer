@@ -1,5 +1,9 @@
 import 'package:efarmer/screens/homescreen.dart';
+import 'package:efarmer/screens/market.dart';
+import 'package:efarmer/screens/resources.dart';
 import 'package:efarmer/screens/splashscreen.dart';
+import 'package:efarmer/viewmodels/MarketDataViewModel.dart';
+
 import 'package:efarmer/viewmodels/WeatherDataViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +31,11 @@ void main() {
       "/": (ctx) => ChangeNotifierProvider(
          create: (ctx) => WeatherDataViewModel(),
          child: HomeScreen(),
+      ),
+      Resources.route: (ctx) => Resources(),
+      Market.route: (ctx) => ChangeNotifierProvider(
+        create: (ctx) => MarketDataViewModel(),
+        child: Market(),
       ),
     },
   ));

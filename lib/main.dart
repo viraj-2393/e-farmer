@@ -28,7 +28,8 @@ void main() {
       primarySwatch: MaterialColor(0xff26c486,color),
     ),
     routes: {
-      "/": (ctx) => ChangeNotifierProvider(
+      "/": (ctx) => SplashScreen(),
+      HomeScreen.route: (ctx) => ChangeNotifierProvider(
          create: (ctx) => WeatherDataViewModel(),
          child: HomeScreen(),
       ),

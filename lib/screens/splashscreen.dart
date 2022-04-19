@@ -1,7 +1,23 @@
+import 'package:efarmer/screens/homescreen.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget{
+class SplashScreen extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return SplashState();
+  }
+}
+class SplashState extends State<SplashScreen>{
   static const routeName = "/splash";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 2),
+            ()=> Navigator.of(context).pushNamed(HomeScreen.route)
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

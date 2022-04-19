@@ -1,3 +1,4 @@
+import 'package:efarmer/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -26,7 +27,12 @@ class Resources extends StatelessWidget{
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xffedf9f5),
-        leading: const Icon(Icons.menu,color: Color(0xff26C487),),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.of(context).pushReplacementNamed(HomeScreen.route);
+          },
+          icon: Icon(Icons.chevron_left,color: Color(0xff26C487),),
+        ),
         actions: const [
           Icon(Icons.settings),
           SizedBox(width: 10,),

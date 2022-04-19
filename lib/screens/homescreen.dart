@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../viewmodels/WeatherInfo.dart';
 
 class HomeScreen extends StatelessWidget{
-
+  static const route = "/homescreen";
   @override
   Widget build(BuildContext context) {
     final dataToDisplay = Provider.of<WeatherDataViewModel>(context);

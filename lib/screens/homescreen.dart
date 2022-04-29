@@ -1,3 +1,5 @@
+import 'package:efarmer/screens/best_deals.dart';
+import 'package:efarmer/screens/resources.dart';
 import 'package:efarmer/viewmodels/WeatherDataViewModel.dart';
 import 'package:efarmer/widget/flower.dart';
 import 'package:efarmer/widget/weatherplates.dart';
@@ -12,10 +14,38 @@ class HomeScreen extends StatelessWidget{
     final dataToDisplay = Provider.of<WeatherDataViewModel>(context);
     final WeatherInfo realtimeData = dataToDisplay.weatherInfo;
     return Scaffold(
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              child: Center(child: Text('E-farmer Menu',style: TextStyle(color: Colors.white,fontSize: 30),),),
+            ),
+            ListTile(
+              title: const Text('Get Loan'),
+              onTap: () {
+                Navigator.of(context).pushNamed(BestDeals.route);
+              },
+            ),
+            ListTile(
+              title: const Text('Farming Resources'),
+              onTap: () {
+                Navigator.of(context).pushNamed(Resources.route);
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xffedf9f5),
-        leading: const Icon(Icons.menu,color: Color(0xff26C487),),
         actions: const [
           Icon(Icons.settings),
           SizedBox(width: 10,),

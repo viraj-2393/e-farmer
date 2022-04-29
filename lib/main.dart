@@ -1,5 +1,7 @@
+import 'package:efarmer/screens/best_deals.dart';
 import 'package:efarmer/screens/homescreen.dart';
 import 'package:efarmer/screens/market.dart';
+import 'package:efarmer/screens/myfarm.dart';
 import 'package:efarmer/screens/resources.dart';
 import 'package:efarmer/screens/splashscreen.dart';
 import 'package:efarmer/viewmodels/MarketDataViewModel.dart';
@@ -23,7 +25,7 @@ void main() {
     900:Color.fromRGBO(38,196,134, 1),
   };
   runApp(MaterialApp(
-    title: 'Flutter Demo',
+    title: 'E-farmer',
     theme: ThemeData(
       primarySwatch: MaterialColor(0xff26c486,color),
     ),
@@ -33,6 +35,8 @@ void main() {
          create: (ctx) => WeatherDataViewModel(),
          child: HomeScreen(),
       ),
+      BestDeals.route: (ctx) => BestDeals(),
+      MyFarm.route: (ctx) => MyFarm(),
       Resources.route: (ctx) => Resources(),
       Market.route: (ctx) => ChangeNotifierProvider(
         create: (ctx) => MarketDataViewModel(),
